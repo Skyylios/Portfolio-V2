@@ -8,9 +8,6 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.17"
-  },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16"
   }
