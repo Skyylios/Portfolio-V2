@@ -11,10 +11,12 @@ createApp({
             pageActive: "accueil",
             hoverColor: "#F29D35", // Couleur orange pour le survol
             currentSlide: 0, // Index du slide actif
+            transitionName: "slide-left",
+            pages: ["accueil", "projets", "contact"],
             description: [
                 "Le projet Comics Blast est le projet de fin d'année de ma formation en concéption de site web et créer en équipe de trois.",
                 "Petit lecteur de musique fait en vuejs et tailwind.",
-                "AI Chat est un projet Permettant de créer plusieurs conversations avec une IA qui envoie la bonne réponse basé sur les mots utilisé. Tout est lié a une base de donnnée et permet la connexion des utilisateurs.",
+                "AI Chat est un projet Permettant de créer plusieurs conversations avec une IA qui envoie la bonne réponse basé sur les mots utilisé.",
                 "Application affichant la météo par rapport a la ville et le pays rentré dans les champs de recherche. Utilise Open Weather Map API.",
                 "Petite Base de donnnée affichant queques films."
             ],
@@ -29,27 +31,27 @@ createApp({
                 "https://github.com/Skyylios/pw2_comics_blast",
                 "https://github.com/Skyylios/Lecteur-de-musique",
                 "https://github.com/Skyylios/Projet-IA-Chat",
-                "Bientot disponible",
-                "Bientot disponible"
+                "#",
+                "#"
             ],
             github: [
-                "Comics Blast",
-                "Lecteur de musique",
-                "Projet IA Chat",
+                "Github Comics Blast",
+                "Github Lecteur de musique",
+                "Github Projet IA Chat",
                 "Bientot disponible",
                 "Bientot disponible"
             ],
             liensEnLigne: [
                 "https://projet-web2-e1.cpsw-fcsei.com/",
                 "https://skyylios.github.io/Lecteur-de-musique/",
-                "Bientot disponible",
-                "Bientot disponible",
-                "Bientot disponible"
+                "#",
+                "#",
+                "#"
             ],
             enLigne: [
-                "Comics Blast",
-                "Lecteur de musique",
-                "Projet IA Chat",
+                "Site Comics Blast",
+                "Site Lecteur de musique",
+                "Pas en ligne",
                 "Bientot disponible",
                 "Bientot disponible"
             ],
@@ -57,8 +59,33 @@ createApp({
     },
     methods: {
         changerPage(page) {
+            if (this.pageActive === "accueil" && page === "projets") {
+                this.transitionName = "slide-left";
+            } else if (this.pageActive === "accueil" && page === "contact") {
+                this.transitionName = "slide-left";
+            }else if (this.pageActive === "projets" && page === "accueil") {
+                this.transitionName = "slide-right";
+            } else if (this.pageActive === "projets" && page === "contact") {
+                this.transitionName = "slide-left";
+            } else if (this.pageActive === "contact" && page === "projets") {
+                this.transitionName = "slide-right";
+            }else if (this.pageActive === "contact" && page === "accueil") {
+                this.transitionName = "slide-right";
+            }
             this.pageActive = page;
         },
+
+        pageSuivante() {
+            const currentIndex = this.pages.indexOf(this.pageActive);
+            const nextIndex = (currentIndex + 1) % this.pages.length; // Boucle infinie
+            this.changerPage(this.pages[nextIndex]);
+          },
+
+          pagePrecedente() {
+            const currentIndex = this.pages.indexOf(this.pageActive);
+            const prevIndex = (currentIndex - 1 + this.pages.length) % this.pages.length;
+            this.changerPage(this.pages[prevIndex]);
+          },
 
         calculateSpans() {
             const spanWidth = Math.floor(window.innerWidth / 16);
