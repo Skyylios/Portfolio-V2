@@ -14,7 +14,7 @@ createApp({
             transitionName: "slide-left",
             pages: ["accueil", "projets", "contact"],
             description: [
-                "Le projet Comics Blast est le projet de fin d'année de ma formation en conception de sites web, créé en équipe de trois.",
+                "Le projet Comics Blast est le projet de fin d'année de ma formation en conception de sites web, créé en équipe de trois et complété en 1 mois et demi.",
                 "Petit lecteur de musique réalisé avec Vue.js et Tailwind.",
                 "AI Chat est un projet permettant de créer plusieurs conversations avec une IA qui envoie la bonne réponse basée sur les mots utilisés.",
                 "Application affichant la météo en fonction de la ville et du pays saisis dans les champs de recherche. Utilise l'API OpenWeatherMap.",
