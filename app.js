@@ -1,24 +1,24 @@
 import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
-let swiper; // Déclaration globale de Swiper
+let swiper;
 
 createApp({
     data() {
         return {
-            spans: 0, // Initialement 0, sera mis à jour dans mounted()
+            spans: 0,
             newColor: "#E8E9EB",
             isDarkMode: true,
             pageActive: "accueil",
-            hoverColor: "#F29D35", // Couleur orange pour le survol
-            currentSlide: 0, // Index du slide actif
+            hoverColor: "#F29D35",
+            currentSlide: 0,
             transitionName: "slide-left",
             pages: ["accueil", "projets", "contact"],
             description: [
-                "Le projet Comics Blast est le projet de fin d'année de ma formation en concéption de site web et créer en équipe de trois.",
-                "Petit lecteur de musique fait en vuejs et tailwind.",
-                "AI Chat est un projet Permettant de créer plusieurs conversations avec une IA qui envoie la bonne réponse basé sur les mots utilisé.",
-                "Application affichant la météo par rapport a la ville et le pays rentré dans les champs de recherche. Utilise Open Weather Map API.",
-                "Petite Base de donnnée affichant queques films."
+                "Le projet Comics Blast est le projet de fin d'année de ma formation en conception de sites web, créé en équipe de trois.",
+                "Petit lecteur de musique réalisé avec Vue.js et Tailwind.",
+                "AI Chat est un projet permettant de créer plusieurs conversations avec une IA qui envoie la bonne réponse basée sur les mots utilisés.",
+                "Application affichant la météo en fonction de la ville et du pays saisis dans les champs de recherche. Utilise l'API OpenWeatherMap.",
+                "Petite base de données affichant quelques films."
             ],
             competences: [
                 "Laravel / Tailwind / Scss",
@@ -31,29 +31,29 @@ createApp({
                 "https://github.com/Skyylios/pw2_comics_blast",
                 "https://github.com/Skyylios/Lecteur-de-musique",
                 "https://github.com/Skyylios/Projet-IA-Chat",
-                "#",
-                "#"
+                "https://github.com/Skyylios/Meteo",
+                "https://github.com/Skyylios/Movie-Database"
             ],
             github: [
                 "Github Comics Blast",
                 "Github Lecteur de musique",
                 "Github Projet IA Chat",
-                "Bientot disponible",
-                "Bientot disponible"
+                "Github API Météo",
+                "Movie Database"
             ],
             liensEnLigne: [
                 "https://projet-web2-e1.cpsw-fcsei.com/",
                 "https://skyylios.github.io/Lecteur-de-musique/",
                 "#",
-                "#",
+                "https://skyylios.github.io/Meteo/",
                 "#"
             ],
             enLigne: [
                 "Site Comics Blast",
                 "Site Lecteur de musique",
                 "Pas en ligne",
-                "Bientot disponible",
-                "Bientot disponible"
+                "Site API Météo",
+                "Pas en ligne"
             ],
         };
     },
@@ -63,13 +63,13 @@ createApp({
                 this.transitionName = "slide-left";
             } else if (this.pageActive === "accueil" && page === "contact") {
                 this.transitionName = "slide-left";
-            }else if (this.pageActive === "projets" && page === "accueil") {
+            } else if (this.pageActive === "projets" && page === "accueil") {
                 this.transitionName = "slide-right";
             } else if (this.pageActive === "projets" && page === "contact") {
                 this.transitionName = "slide-left";
             } else if (this.pageActive === "contact" && page === "projets") {
                 this.transitionName = "slide-right";
-            }else if (this.pageActive === "contact" && page === "accueil") {
+            } else if (this.pageActive === "contact" && page === "accueil") {
                 this.transitionName = "slide-right";
             }
             this.pageActive = page;
@@ -77,15 +77,15 @@ createApp({
 
         pageSuivante() {
             const currentIndex = this.pages.indexOf(this.pageActive);
-            const nextIndex = (currentIndex + 1) % this.pages.length; // Boucle infinie
+            const nextIndex = (currentIndex + 1) % this.pages.length;
             this.changerPage(this.pages[nextIndex]);
-          },
+        },
 
-          pagePrecedente() {
+        pagePrecedente() {
             const currentIndex = this.pages.indexOf(this.pageActive);
             const prevIndex = (currentIndex - 1 + this.pages.length) % this.pages.length;
             this.changerPage(this.pages[prevIndex]);
-          },
+        },
 
         calculateSpans() {
             const spanWidth = Math.floor(window.innerWidth / 16);
@@ -155,7 +155,7 @@ createApp({
                             },
                             on: {
                                 slideChange: () => {
-                                    this.currentSlide = swiper.realIndex; // Met à jour `currentSlide`
+                                    this.currentSlide = swiper.realIndex;
                                     console.log("Slide actif : ", this.currentSlide);
                                 }
                             }
